@@ -3,7 +3,7 @@
 Ein modernes **Mini-CRM-System für B2B/Großhandel**, entwickelt mit:
 
 - ⚛️ React + TypeScript (Frontend)
-- ☕ Spring Boot (Backend)
+- ☕ Java + Spring Boot (Backend)
 - 🐘 PostgreSQL (Datenbank)
 - 🐳 Docker & Docker Compose (Infrastruktur)
 
@@ -55,47 +55,6 @@ mini-crm/
 
 - Docker
 - Docker Compose
-
----
-
-# 🧠 Datenbank-Konzept (B2B-CRM)
-
-## 🏢 Company
-
-- Name
-- Status
-- Umsatz
-- Standardrabatt
-
-## 👤 ContactPerson
-
-- Vorname, Nachname
-- E-Mail
-- Position
-- Beziehung: Many-to-One zu Company
-
-## 📝 Interaction
-
-- Text
-- Datum
-- Typ (Notiz, Besuchsbericht, Anruf)
-- Beziehung: Many-to-One zu Company
-
-## 📌 Task
-
-- Titel
-- Fälligkeitsdatum
-- Priorität
-- Status
-- Beziehung: Many-to-One zu Company
-
-## 💰 Offer
-
-- Angebotsnummer
-- Wert
-- Inhalt
-- Status
-- Beziehung: Many-to-One zu Company
 
 ---
 

@@ -6,6 +6,7 @@ import com.minicrm.backend.repository.UserRepository;
 import com.minicrm.backend.repository.TaskRepository;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,12 +23,14 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class UserController {
     
+    private final BCryptPasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final TaskRepository taskRepository;
 
-    public UserController(UserRepository userRepository, TaskRepository taskRepository) {
+    public UserController(UserRepository userRepository, TaskRepository taskRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.taskRepository = taskRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     // --- GET Endpunkte ---
@@ -46,6 +49,7 @@ public class UserController {
     // --- POST Endpunkte ---
     @PostMapping
     public User creatUser(@RequestBody User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
